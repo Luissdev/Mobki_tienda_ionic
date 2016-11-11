@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar #content>
+    <button ion-button menuToggle (click)="openMenu()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Tienda mobkii
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-menu side="left" [content]="content">
+  <ion-content>
+    <ion-searchbar>
+    </ion-searchbar>
+    <ion-list>
+      <ion-item>Testing</ion-item>
+      <ion-item>testign2 </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!--<ion-fab bottom right>
+  <button ion-fab color="light"><ion-icon name="arrow-dropleft"></ion-icon></button>
+</ion-fab>-->
+<ion-tabs>
+  <ion-tab [root]="tab1Root" tabTitle="Inicio" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Productos" tabIcon="list-box"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Carrito" tabIcon="cart"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="Perfil" tabIcon="contacts"></ion-tab>
+</ion-tabs>

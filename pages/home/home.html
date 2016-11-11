@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+  <h2>Productos desacados</h2>
+  <ion-slides>
+    <ion-slide>
+      <h1>Producto 1</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Producto 2</h1>
+    </ion-slide>
+    <ion-slide>
+      <h1>Producto 3</h1>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card>
+    <img src="../../assets/img/p.png" />
+    <ion-card-content>
+      <ion-card-title>
+        Nine Inch Nails Live
+      </ion-card-title>
+      <p>
+        The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+      </p>
+      <ion-row>
+        <ion-col (click)="productoDetalle()">Ver detalle</ion-col>
+        <ion-col>Favorito</ion-col>
+        <ion-col>Carrito</ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <img src="../../assets/img/c.png" />
+    <ion-card-content>
+      <ion-card-title>
+        Nine Inch Nails Live
+      </ion-card-title>
+      <p>
+        The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+      </p>
+      <ion-row>
+        <ion-col (click)="productoDetalle()">Ver detalle</ion-col>
+        <ion-col>Favorito</ion-col>
+        <ion-col>Carrito</ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

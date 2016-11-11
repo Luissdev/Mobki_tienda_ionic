@@ -1,0 +1,40 @@
+<!--
+  Generated template for the Perfil page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>perfil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="">
+    </ion-avatar>
+    <h2>Coca cola</h2>
+    <h3>$16</h3>
+    <p>Este es un refresco de la familia coca cola el cual esta bien rico</p>
+  </ion-item>
+
+  {{Perfil.perfil.nombre}} - {{Perfil.perfil.correo}} - {{Perfil.perfil.descripcion}}
+
+  <button ion-button round (click)="Perfil.getPedidos()">Pedidos</button>
+
+  <ion-card *ngFor="let pedido of Perfil.pedidos">
+    <ion-card-content>
+      <ion-card-title>
+        Pedido id: {{pedido.id}}
+      </ion-card-title>
+      <ion-label>Total: {{pedido.subtotal}}</ion-label>
+      <ion-label>Productos: {{pedido.total_producto}}</ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

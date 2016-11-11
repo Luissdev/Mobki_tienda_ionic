@@ -1,0 +1,59 @@
+<!--
+  Generated template for the Login page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Inicio de sesion</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding *ngIf="login === false">
+  <ion-segment [(ngModel)]="accion">
+    <ion-segment-button value="login">
+      Iniciar sesión
+    </ion-segment-button>
+    <ion-segment-button value="registro">
+      Registrarse
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="accion">
+    <div *ngSwitchCase="'login'">
+      <ion-item>
+        <ion-label floating>Correo</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.correo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="usuario.contrasenia"></ion-input>
+      </ion-item>
+      <button ion-button round (click)="onLogin()">Iniciar sesión</button>
+    </div>
+    <div *ngSwitchCase="'registro'">
+      <ion-item>
+        <ion-label floating>Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Correo</ion-label>
+        <ion-input type="email" [(ngModel)]="usuario.correo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="usuario.contrasenia"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Confirmar contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="usuario.confirmar_contrasenia"></ion-input>
+      </ion-item>
+      <button ion-button round (click)="onRegistro()">Registrarse</button>
+    </div>
+  </div>
+</ion-content>
