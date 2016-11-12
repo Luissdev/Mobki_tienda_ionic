@@ -16,9 +16,8 @@ export class Perfil {
 
   constructor(public http: Http) {
     if (localStorage.getItem('data') && localStorage.getItem('usr')) {
-      console.log('hola');
       this.perfil = JSON.parse(localStorage.getItem('data'))[0];
-      console.log(this.perfil);
+      this.getPedidos();
     }
   }
 

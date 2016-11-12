@@ -11,6 +11,7 @@ import { CarritoPage } from '../pages/carrito/carrito'
 import { InicioPage } from '../pages/inicio/inicio'
 import { PerfilPage } from '../pages/perfil/perfil'
 import { LoginPage } from '../pages/login/login'
+import { PedidoDetallePage } from '../pages/pedido-detalle/pedido-detalle'
 import { Producto } from '../providers/producto'
 import { Carrito } from '../providers/carrito'
 import { Categoria } from '../providers/categoria'
@@ -29,7 +30,8 @@ import { Perfil } from '../providers/perfil'
     CarritoPage,
     InicioPage,
     PerfilPage,
-    LoginPage
+    LoginPage,
+    PedidoDetallePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -46,7 +48,8 @@ import { Perfil } from '../providers/perfil'
     CarritoPage,
     InicioPage,
     PerfilPage,
-    LoginPage
+    LoginPage,
+    PedidoDetallePage
   ],
   providers: [Producto, Carrito, Categoria, Login, Perfil]
 })

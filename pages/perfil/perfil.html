@@ -14,21 +14,22 @@
 
 
 
-<ion-content padding>
-  <ion-item>
-    <ion-avatar item-left>
+<ion-content padding text-center>
+  <ion-list>
+
+    <ion-item text-center>
       <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" alt="">
-    </ion-avatar>
-    <h2>Coca cola</h2>
-    <h3>$16</h3>
-    <p>Este es un refresco de la familia coca cola el cual esta bien rico</p>
-  </ion-item>
+    </ion-item>
+    <ion-item>
+      <h2>Nombre: {{Perfil.perfil.nombre}}</h2>
+      <h3>Correo: {{Perfil.perfil.correo}}</h3>
+      <p>Acerca de ti: {{Perfil.perfil.descripcion}}</p>
+    </ion-item>
+  </ion-list>
 
-  {{Perfil.perfil.nombre}} - {{Perfil.perfil.correo}} - {{Perfil.perfil.descripcion}}
+  <!--<button ion-button round (click)="Perfil.getPedidos()">Pedidos</button>-->
 
-  <button ion-button round (click)="Perfil.getPedidos()">Pedidos</button>
-
-  <ion-card *ngFor="let pedido of Perfil.pedidos">
+  <!--<ion-card *ngFor="let pedido of Perfil.pedidos">
     <ion-card-content>
       <ion-card-title>
         Pedido id: {{pedido.id}}
@@ -37,4 +38,8 @@
       <ion-label>Productos: {{pedido.total_producto}}</ion-label>
     </ion-card-content>
   </ion-card>
+</ion-content>-->
 </ion-content>
+<ion-footer *ngIf="Perfil.pedidos">
+  <button ion-button block (click)="getPedidos()">Mis pedidos</button>
+</ion-footer>
