@@ -14,10 +14,19 @@
 
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="getItems($event)">
+  <ion-searchbar placeholder="buscar" animated="true" [(ngModel)]="buscar" (search)="getItems($event)">
   </ion-searchbar>
 
-  <ion-item>
+
+  <ion-list>
+    <ion-list-header>Categorias</ion-list-header>
+    <ion-item *ngFor="let categoria of categorias">
+      <ion-label (click)="getCategoria(categoria.nombre)">
+        {{categoria.nombre}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <!--<ion-item>
     <ion-label>Categoria</ion-label>
     <ion-select [(ngModel)]="categoriaSeleccionada" (ngModelChange)="getCategoria($event)">
       <ion-option *ngFor="let categoria of categorias" vaue="categoria.id">{{categoria.nombre}}</ion-option>
@@ -34,17 +43,10 @@
         <p>
           Precio: <b>${{producto.precio}}</b>
         </p>
-        <!--<ion-row>
-          <ion-col>
-            <ion-icon name="list-box"></ion-icon>
-          </ion-col>
-          <ion-col>
-            <ion-icon name="cart" (click)="agregarCarrito(producto.id, producto.nombre, producto.precio)"></ion-icon>
-          </ion-col>
-        </ion-row>-->
       </ion-card-content>
     </ion-card>
-  </ion-list>
+  </ion-list>-->
+
 
   <ion-label *ngIf="!productos">Esta categoria no tiene ningun producto aún</ion-label>
 </ion-content>

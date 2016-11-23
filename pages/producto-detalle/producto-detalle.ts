@@ -36,6 +36,6 @@ export class ProductoDetallePage {
   }
 
   dismiss() {
-    this.viewCtrl.dismiss();
+    this.navCtrl.pop();
   }
 }

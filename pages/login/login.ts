@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Login } from '../../providers/login'
 import { TabsPage } from '../tabs/tabs'
+
+import { Perfil } from '../../providers/perfil'
 /*
   Generated class for the Login page.
 
@@ -21,7 +23,7 @@ export class LoginPage {
   public accion: string = 'login';
   public login = true;
 
-  constructor(public navCtrl: NavController, public Login: Login) {
+  constructor(public navCtrl: NavController, public Login: Login, public Perfil: Perfil) {
     if (localStorage.getItem('usr')) {
       this.navCtrl.setRoot(TabsPage);
       this.login = true;

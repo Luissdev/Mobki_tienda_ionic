@@ -49,8 +49,6 @@ export class Categoria {
       this.productos_buscar = this.productos_buscar.filter((item) => {
         return (item.nombre.toString().toLowerCase().indexOf(producto.toLowerCase()) > -1);
       });
-
-      console.log(this.productos_buscar);
     }
     return this.productos_buscar;
   }

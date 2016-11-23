@@ -7,11 +7,15 @@ import { InicioPage } from '../inicio/inicio'
 import { PerfilPage } from '../perfil/perfil'
 
 import { Producto } from '../../providers/producto'
+import { Carrito } from '../../providers/carrito'
+// import { Perfil } from '../../providers/perfil'
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
+
+  public logeado = true;
   // this tells the tabs component which Pages
   // should be each tab's root Page
   tab1Root: any = InicioPage;
@@ -19,7 +23,9 @@ export class TabsPage {
   tab3Root: any = CarritoPage;
   tab4Root: any = PerfilPage;
 
-  constructor(private menuCtrl: MenuController, public Producto: Producto) {
+  constructor(private menuCtrl: MenuController,
+    public Producto: Producto,
+    public Carrito: Carrito) {
     this.Producto.getDestacados();
   }
 

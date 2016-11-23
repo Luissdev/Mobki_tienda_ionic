@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
+import { Perfil } from '../providers/perfil'
+
 /*
   Generated class for the Login provider.
 
@@ -14,7 +16,7 @@ export class Login {
   public url = 'http://luis.mbk11.net/laravel/public/auth/';
   headers = new Headers();
 
-  constructor(public http: Http) {
+  constructor(public http: Http, public Perfil: Perfil) {
     console.log('Hello Login Provider');
   }
 
@@ -37,6 +39,7 @@ export class Login {
       .toPromise()
       .then(respuesta => {
         localStorage.setItem('data', JSON.stringify(respuesta.json()))
+        this.Perfil.perfil = respuesta.json();
       });
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ModalController, NavParams, NavController } from 'ionic-angular';
+import { ModalController, NavParams, NavController, Slides } from 'ionic-angular';
 
 import { ProductoDetallePage } from '../producto-detalle/producto-detalle'
 
@@ -9,6 +9,11 @@ import { ProductoDetallePage } from '../producto-detalle/producto-detalle'
   templateUrl: 'home.html'
 })
 export class HomePage {
+
+  public mySlideOptions = {
+    initialSlide: 1,
+    loop: true
+  };
 
   constructor(public navCtrl: NavController, private modalCtrl: ModalController, private params: NavParams) {
 

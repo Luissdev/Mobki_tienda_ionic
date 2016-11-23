@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+
+// import { Carrito } from '../providers/carrito'
+
 
 /*
   Generated class for the Perfil provider.
@@ -10,13 +13,19 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class Perfil {
-  public perfil = { "nombre": '', "correo": '', "descripcion": ''};
+  public perfil = { "nombre": '', "correo": '' };
   public pedidos = [];
+  public pedido_detalle = [];
+  public total: number = 0;
   public url = 'http://luis.mbk11.net/laravel/public/auth/';
+  public direcciones = [];
+  public direccion: string = "";
+  headers = new Headers();
 
   constructor(public http: Http) {
     if (localStorage.getItem('data') && localStorage.getItem('usr')) {
-      this.perfil = JSON.parse(localStorage.getItem('data'))[0];
+      this.perfil = JSON.parse(localStorage.getItem('data'));
+      console.log(this.perfil);
       this.getPedidos();
     }
   }
@@ -26,9 +35,41 @@ export class Perfil {
       .toPromise()
       .then(respuesta => this.pedidos = respuesta.json());
   }
-  getActualizarPerfil() {
 
+  getPedidoDetalle(id: number) {
+    this.http.get(this.url + `pedido/pedido-detalle/${id}`)
+      .toPromise()
+      .then(respuesta => {
+        this.pedido_detalle = respuesta.json()
+        console.log(respuesta);
+        this.direccion = this.pedido_detalle[0].direccion_secundaria;
+        this.getTotal();
+      });
   }
 
+  getTotal() {
+    this.total = 0;
+    for (let producto of this.pedido_detalle) {
+      this.total += producto.cantidad * producto.precio;
+    }
+  }
 
+  crearDireccion(direccion: string, guardar: number) {
+    this.headers.append('Content-Type', 'application/json');
+    let direccionobj = { "token": localStorage.getItem('usr'), "direccion": direccion, "guardar": guardar };
+    return this.http.post(this.url + 'cliente/nueva-direccion', direccionobj, { headers: this.headers })
+      .toPromise()
+      .then(respuesta => respuesta.json());
+  }
+
+  getDirecciones() {
+    this.http.get(this.url + `cliente/direcciones/` + localStorage.getItem('usr'))
+      .toPromise()
+      .then(respuesta => {
+        this.direcciones = respuesta.json();
+        console.log(this.direcciones);
+      });
+  }
+  getActualizarPerfil() {
+  }
 }

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 
 import { Carrito } from '../../providers/carrito'
+
+import { ProcesarPedidoPage } from '../procesar-pedido/procesar-pedido'
 /*
   Generated class for the Carrito page.
 
@@ -14,9 +16,23 @@ import { Carrito } from '../../providers/carrito'
 })
 export class CarritoPage {
   public carrito;
-  constructor(public navCtrl: NavController, public Carrito: Carrito) {
+  constructor(public navCtrl: NavController, public Carrito: Carrito, public toastCtrl: ToastController) {
     // this.carrito = this.Carrito.localCarrito;
     this.Carrito.getTotal();
+    if (Carrito.total === 0) {
+      let toast = this.toastCtrl.create({
+        message: 'Aún no tienes ningun producto en tu carrito',
+        showCloseButton: true,
+        closeButtonText: 'cerrar',
+        position: 'middle'
+      });
+      toast.present();
+      toast.onDidDismiss(() => { });
+    }
+  }
+
+  procesarPedido() {
+    this.navCtrl.push(ProcesarPedidoPage);
   }
 
   ionViewDidLoad() {

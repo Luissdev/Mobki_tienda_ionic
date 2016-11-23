@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+
 import { Perfil } from '../../providers/perfil'
 
 /*
@@ -13,10 +14,10 @@ import { Perfil } from '../../providers/perfil'
   templateUrl: 'pedido-detalle.html'
 })
 export class PedidoDetallePage {
-
-  constructor(public navCtrl: NavController, public params: NavParams,
-    public Perfil: Perfil, public viewCtrl: ViewController) {
-
+  public pedido:number;
+  constructor(public navCtrl: NavController, public params: NavParams, public Perfil: Perfil) {
+    this.pedido = this.params.get('id');
+    this.Perfil.getPedidoDetalle(this.pedido);
   }
 
   ionViewDidLoad() {
@@ -24,6 +25,6 @@ export class PedidoDetallePage {
   }
 
   dismiss() {
-    this.viewCtrl.dismiss();
+    this.navCtrl.pop();
   }
 }

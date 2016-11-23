@@ -1,5 +1,5 @@
 <!--
-  Generated template for the Inicio page.
+  Generated template for the ProductoLista page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,20 +7,13 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Inicio</ion-title>
+    <ion-title>{{id}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-  <ion-slides>
-    <ion-slide *ngFor="let producto of productos" (click)="mostrarProducto(producto)">
-      <img src="http://luis.mbk11.net/laravel/public/{{producto.imagen}}" alt="">
-    </ion-slide>
-  </ion-slides>
   <ion-list>
-    <ion-list-header>Productos Destacados</ion-list-header>
     <ion-card *ngFor="let producto of productos">
       <ion-card-content>
         <img src="http://luis.mbk11.net/laravel/public/{{producto.imagen}}" alt="" (click)="mostrarProducto(producto)">
@@ -29,15 +22,6 @@
           Precio: <b>${{producto.precio}}</b>
         </p>
         <button mini><ion-icon name="cart" (click)="agregarCarrito(producto.id, producto.nombre, producto.precio, producto.imagen)"></ion-icon></button>
-
-        <!--<ion-row>
-          <ion-col>
-            <ion-icon name="list-box"></ion-icon>
-          </ion-col>
-          <ion-col>
-            <ion-icon name="cart" (click)="agregarCarrito(producto.id, producto.nombre, producto.precio)"></ion-icon>
-          </ion-col>
-        </ion-row>-->
       </ion-card-content>
     </ion-card>
   </ion-list>

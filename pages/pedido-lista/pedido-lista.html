@@ -1,0 +1,34 @@
+<!--
+  Generated template for the PedidoLista page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalle del pedidosss</ion-title>
+    <ion-buttons right>
+      <button>
+        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+        <span showWhen="ios">Cancelar</span>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let pedido of Perfil.pedidos" (click)="detallepedido(pedido.id)">
+      <ion-label>Pedido id: {{pedido.id}}</ion-label>
+      <ion-label>Total: {{pedido.subtotal}}</ion-label>
+      <ion-label>Productos: {{pedido.total_producto}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab bottom left (click)="dismiss()">
+    <button ion-fab mini><ion-icon name="arrow-back"></ion-icon></button>
+  </ion-fab>
+</ion-content>

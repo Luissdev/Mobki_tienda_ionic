@@ -6,6 +6,7 @@ import { Carrito } from '../../providers/carrito'
 import { Categoria } from '../../providers/categoria'
 
 import { ProductoDetallePage } from '../producto-detalle/producto-detalle'
+import { ProductoListaPage } from '../producto-lista/producto-lista'
 
 /*
   Generated class for the Categoria page.
@@ -19,6 +20,7 @@ import { ProductoDetallePage } from '../producto-detalle/producto-detalle'
 })
 export class CategoriaPage {
   public productos;
+  public buscar: string = "";
   public categorias;
   public categoriaSeleccionada;
   public lbl_destacados = false;
@@ -42,18 +44,22 @@ export class CategoriaPage {
     this.Carrito.agregarCarrito(producto);
   }
 
-  getCategoria(evento) {
+  getCategoria(id) {
     // console.log(evento);
-    this.Categoria.getProductoCategoria(evento).then(respuesta => this.productos = respuesta);
-    this.lbl_destacados = false;
+    this.navCtrl.push(ProductoListaPage, { id });
+    // this.Categoria.getProductoCategoria(evento).then(respuesta => this.productos = respuesta);
+    // this.lbl_destacados = false;
   }
 
-  getItems(nombre) {
-    let buscar: string = nombre.target.value;
-    if (buscar != '' && buscar && buscar.trim()) {
-      this.Categoria.getBuscar(nombre.target.value);
+  getItems(something) {
+    console.log(this.buscar);
+    if (this.buscar != '' && this.buscar && this.buscar.trim()) {
+      this.Categoria.getBuscar(this.buscar);
       this.productos = this.Categoria.productos_buscar;
-      this.lbl_destacados = false;
+      let productos = this.productos;
+      let buscar = this.buscar;
+      this.navCtrl.push(ProductoListaPage, { buscar });
+      this.buscar = "";
     } else {
       this.Producto.getDestacados().then(respuesta => this.productos = respuesta);
       this.lbl_destacados = true;
@@ -63,6 +69,8 @@ export class CategoriaPage {
   mostrarProducto(producto) {
     let producto_modal = this.modalCtrl.create(ProductoDetallePage, { producto })
     producto_modal.present();
+
+    producto_modal.onDidDismiss(data => console.log(data));
   }
 
   ionViewDidLoad() {
