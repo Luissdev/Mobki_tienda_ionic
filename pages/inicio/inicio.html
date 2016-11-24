@@ -15,30 +15,41 @@
 
 <ion-content padding>
   <ion-slides>
-    <ion-slide *ngFor="let producto of productos" (click)="mostrarProducto(producto)">
-      <img src="http://luis.mbk11.net/laravel/public/{{producto.imagen}}" alt="">
+    <ion-slide>
+      <img src="http://www.menucool.com/slider/prod/image-slider-5.jpg" alt="">
     </ion-slide>
+
+    <ion-slide>
+      <img src="http://economicdevelopment.missouri.edu/features/2015/pepsi-midamerica-breaks-ground-on-new-cape-girardeau-facility/banner.jpg"
+        alt="">
+    </ion-slide>
+    <ion-slide *ngFor="let producto of productos" (click)="mostrarProducto(producto)">
+      <!--<img src="http://luis.mbk11.net/laravel/public/{{producto.imagen}}" alt="">-->
+      <img src="https://www.tl-hub.be/sites/tl-hub.com/files/jobs/header/coca-cola-jobs-tl-hub_16.jpg" alt="">
+    </ion-slide>
+
   </ion-slides>
   <ion-list>
-    <ion-list-header>Productos Destacados</ion-list-header>
+    <h2 align="center">Productos destacados</h2>
     <ion-card *ngFor="let producto of productos">
-      <ion-card-content>
+      <ion-card-content text-nowrap>
         <img src="http://luis.mbk11.net/laravel/public/{{producto.imagen}}" alt="" (click)="mostrarProducto(producto)">
-        <h2 (click)="mostrarProducto(producto)"><b>{{producto.nombre}}</b></h2>
-        <p>
-          Precio: <b>${{producto.precio}}</b>
-        </p>
-        <button mini><ion-icon name="cart" (click)="agregarCarrito(producto.id, producto.nombre, producto.precio, producto.imagen)"></ion-icon></button>
-
-        <!--<ion-row>
-          <ion-col>
-            <ion-icon name="list-box"></ion-icon>
-          </ion-col>
-          <ion-col>
-            <ion-icon name="cart" (click)="agregarCarrito(producto.id, producto.nombre, producto.precio)"></ion-icon>
-          </ion-col>
-        </ion-row>-->
       </ion-card-content>
+      <ion-item>
+        <ion-row text-nowrap>
+          <ion-col>
+
+            <h2 (click)="mostrarProducto(producto)"><b>{{producto.nombre}}</b></h2>
+            <p>
+              Precio: <b>${{producto.precio}}</b>
+            </p>
+          </ion-col>
+          <!--<ion-badge item-left>Precio {{producto.precio}}</ion-badge>-->
+          <ion-col>
+            <button ion-button item-right><ion-icon name="cart" (click)="agregarCarrito(producto.id, producto.nombre, producto.precio, producto.imagen)"></ion-icon></button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
     </ion-card>
   </ion-list>
 </ion-content>
