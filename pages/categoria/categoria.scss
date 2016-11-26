@@ -28,8 +28,18 @@ page-categoria {
             }
         }
     }
+    h2 {
+        margin-top: 15px !important;
+        /*margin-left: 15px;*/
+    }
+
+    .searchbar-input{
+        border-radius: 10px !important;
+    }
 }
 
-.card-md+ion-card, .card-ios+ion-card, .card-wp+ion-card {
+.card-md+ion-card,
+.card-ios+ion-card,
+.card-wp+ion-card {
     margin-top: 10px !important;
 }

@@ -12,16 +12,19 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-list>
+    <!--<ion-item>
+      <h2 text-center> <b>Productos destacados</b></h2>
+    </ion-item>-->
     <ion-card *ngFor="let producto of productos">
+      <img src="http://luis.mbk11.net/laravel/public/{{producto.imagen}}" alt="" (click)="mostrarProducto(producto)">
       <ion-card-content text-nowrap>
-        <img src="http://luis.mbk11.net/laravel/public/{{producto.imagen}}" alt="" (click)="mostrarProducto(producto)">
-        <h2 (click)="mostrarProducto(producto)"><b>{{producto.nombre}}</b></h2>
-        <p>
-          Precio: <b>${{producto.precio}}</b>
-          <button ion-button mini><ion-icon name="cart" (click)="agregarCarrito(producto.id, producto.nombre, producto.precio, producto.imagen)"></ion-icon></button>
-        </p>
+        <h2 class="card-title" padding-right> <b>{{producto.nombre}}</b></h2>
+        <h4>Precio: <b>${{producto.precio}}</b></h4>
+        <button ion-button block (click)="agregarCarrito(producto.id, producto.nombre, producto.precio, producto.imagen)">
+             <ion-icon name="cart"></ion-icon>
+        </button>
       </ion-card-content>
     </ion-card>
   </ion-list>

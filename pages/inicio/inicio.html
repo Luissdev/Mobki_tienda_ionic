@@ -7,13 +7,13 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Inicio</ion-title>
+    <ion-title text-center>Inicio</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <ion-slides>
     <ion-slide>
       <img src="http://www.menucool.com/slider/prod/image-slider-5.jpg" alt="">
@@ -30,26 +30,24 @@
 
   </ion-slides>
   <ion-list>
-    <h2 align="center">Productos destacados</h2>
+    <ion-item>
+      <h2 text-center> <b>Productos destacados</b></h2>
+    </ion-item>
     <ion-card *ngFor="let producto of productos">
+      <img src="http://luis.mbk11.net/laravel/public/{{producto.imagen}}" alt="" (click)="mostrarProducto(producto)">
       <ion-card-content text-nowrap>
-        <img src="http://luis.mbk11.net/laravel/public/{{producto.imagen}}" alt="" (click)="mostrarProducto(producto)">
-      </ion-card-content>
-      <ion-item>
-        <ion-row text-nowrap>
+        <h2 class="card-title" padding-right> <b>{{producto.nombre}}</b></h2>
+        <ion-row>
           <ion-col>
-
-            <h2 (click)="mostrarProducto(producto)"><b>{{producto.nombre}}</b></h2>
-            <p>
-              Precio: <b>${{producto.precio}}</b>
-            </p>
+            <h4>Precio: <b>${{producto.precio}}</b></h4>
           </ion-col>
-          <!--<ion-badge item-left>Precio {{producto.precio}}</ion-badge>-->
-          <ion-col>
-            <button ion-button item-right><ion-icon name="cart" (click)="agregarCarrito(producto.id, producto.nombre, producto.precio, producto.imagen)"></ion-icon></button>
+          <ion-col paddin-left width-33>
+            <button ion-button block (click)="agregarCarrito(producto.id, producto.nombre, producto.precio, producto.imagen)">
+             <ion-icon name="cart"></ion-icon>
+            </button>
           </ion-col>
         </ion-row>
-      </ion-item>
+      </ion-card-content>
     </ion-card>
   </ion-list>
 </ion-content>
